@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Services() {
   const [users, setUsers] = useState([]);
@@ -19,9 +20,10 @@ export default function Services() {
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {users.map((u) => (
-          <div
+          <Link
+            to={`/services/${u.id}`}   // Link qo'shildi
             key={u.id}
-            className="bg-white border rounded-lg shadow-lg p-5 hover:shadow-2xl transition transform hover:-translate-y-1"
+            className="block bg-white border rounded-lg shadow-lg p-5 hover:shadow-2xl transition transform hover:-translate-y-1"
             data-aos="fade-up"
             data-aos-delay="100"
           >
@@ -32,7 +34,7 @@ export default function Services() {
             <p className="text-gray-600">
               Phone: {u.phone || "N/A"}
             </p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";  // Link import qilindi
 
 export default function Contact() {
   const [contacts, setContacts] = useState([]);
@@ -14,9 +15,10 @@ export default function Contact() {
       <h1 className="text-3xl font-bold mb-6 text-teal-700">Contact List</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {contacts.map((contact) => (
-          <div
+          <Link
+            to={`/contact/${contact.id}`}  // Bu yerda Link bilan yo‘l ko‘rsatiladi
             key={contact.id}
-            className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center"
+            className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center hover:shadow-lg transition"
           >
             <img
               src={contact.image}
@@ -28,7 +30,7 @@ export default function Contact() {
             </h3>
             <p className="text-gray-600 mt-1">Email: {contact.email}</p>
             <p className="text-gray-600">Phone: {contact.phone}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
